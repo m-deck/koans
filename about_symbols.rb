@@ -57,7 +57,7 @@ class AboutSymbols < Neo::Koan
     value = "and"
     symbol = :"cats #{value} dogs"
 
-    assert_equal "cats #{value} dogs".to_sym, symbol
+    assert_equal "cats and dogs".to_sym, symbol
   end
 
   def test_to_s_is_called_on_interpolated_symbols
@@ -69,14 +69,14 @@ class AboutSymbols < Neo::Koan
 
   def test_symbols_are_not_strings
     symbol = :ruby
-    assert_equal __, symbol.is_a?(String)
-    assert_equal __, symbol.eql?("ruby")
+    assert_equal false, symbol.is_a?(String)
+    assert_equal false, symbol.eql?("ruby")
   end
 
   def test_symbols_do_not_have_string_methods
     symbol = :not_a_string
-    assert_equal __, symbol.respond_to?(:each_char)
-    assert_equal __, symbol.respond_to?(:reverse)
+    assert_equal false, symbol.respond_to?(:each_char)
+    assert_equal false, symbol.respond_to?(:reverse)
   end
 
   # It's important to realize that symbols are not "immutable
